@@ -49,7 +49,7 @@ body {
 .link-button {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: var(--spacing-md) 20px;
     background-color: var(--button-bg-light);
     color: var(--text-color);
@@ -61,6 +61,7 @@ body {
     border: 2px solid transparent; /* Borde para el hover */
 }
 
+
 .link-button:hover {
     background-color: var(--button-hover);
     transform: translateY(-3px);
@@ -68,8 +69,8 @@ body {
 }
 
 .link-button .icon {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     margin-right: 12px;
     
 }
@@ -99,6 +100,11 @@ body {
     background-color: #00d4c1; /* Un tono más oscuro de TikTok */
 }
 
+i {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
 /* Media Queries para pantallas más grandes si es necesario, aunque mobile-first es la prioridad */
 @media (min-width: 600px) {
     .container {
@@ -112,3 +118,41 @@ body {
         padding: 18px 25px;
     }
 }
+
+/* ... (tu CSS anterior) ... */
+
+/* Estilos para el indicador de "En Vivo" */
+.live-indicator {
+    width: 40px;
+    height: 40px;
+    background-color: transparent; /* Por defecto transparente */
+    border-radius: 50%;
+    margin-left: 10px;
+    position: relative; /* Para el parpadeo */
+    display: inline-block; /* Para que ocupe espacio */
+    opacity: 0; /* Por defecto oculto */
+    transition: opacity 0.3s ease; /* Transición suave */
+}
+
+.live-indicator.live {
+    background-color: #ff0000; /* Rojo vivo */
+    opacity: 1; /* Visible */
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); /* Sombra inicial para el pulso */
+    animation: pulse 1.5s infinite; /* Animación de pulso */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
