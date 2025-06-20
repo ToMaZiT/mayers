@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // URL del endpoint de tu Glitch.
     // DEBES reemplazar esto con la URL real de tu proyecto de Glitch.
     // Por ejemplo: 'https://tu-proyecto-de-glitch.glitch.me/check-twitch-status'
-    const GLITCH_API_URL = 'https://notch-sky-floss.glitch.me';
+   const GLITCH_API_URL = 'https://notch-sky-floss.glitch.me/check-twitch-status';
 
     // Selecciona todos los botones de Twitch que tienen un atributo data-channel
     const twitchButtons = document.querySelectorAll('.link-button.twitch[data-channel]');
