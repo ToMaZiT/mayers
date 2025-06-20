@@ -1,0 +1,114 @@
+:root {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --twitch-color: #9146FF;
+    --youtube-color: #FF0000;
+    --tiktok-color: #00F2EA; /* Un poco más vibrante para TikTok */
+    --button-bg-light: #2b2b4d;
+    --button-hover: #4e4e6d;
+    --border-radius: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea al inicio para que el contenido no se centre verticalmente de golpe */
+    min-height: 100vh;
+    padding: var(--spacing-lg) var(--spacing-md);
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px; /* Ancho máximo para pantallas más grandes */
+    text-align: center;
+    background-color: #24243e;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg) var(--spacing-md);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.title {
+    font-size: 1.8em;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.links-grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md) 20px;
+    background-color: var(--button-bg-light);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent; /* Borde para el hover */
+}
+
+.link-button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.link-button .icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    
+}
+
+/* Colores específicos para cada plataforma */
+.link-button.twitch {
+    background-color: var(--twitch-color);
+    color: white;
+}
+.link-button.twitch:hover {
+    background-color: #772ace; /* Un tono más oscuro de Twitch */
+}
+
+.link-button.youtube {
+    background-color: var(--youtube-color);
+    color: white;
+}
+.link-button.youtube:hover {
+    background-color: #cc0000; /* Un tono más oscuro de YouTube */
+}
+
+.link-button.tiktok {
+    background-color: var(--tiktok-color);
+    color: var(--bg-color); /* Texto oscuro para contrastar con el TikTok color */
+}
+.link-button.tiktok:hover {
+    background-color: #00d4c1; /* Un tono más oscuro de TikTok */
+}
+
+/* Media Queries para pantallas más grandes si es necesario, aunque mobile-first es la prioridad */
+@media (min-width: 600px) {
+    .container {
+        padding: var(--spacing-lg) 30px;
+    }
+    .title {
+        font-size: 2.2em;
+    }
+    .link-button {
+        font-size: 1.2em;
+        padding: 18px 25px;
+    }
+}
