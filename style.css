@@ -7,18 +7,19 @@
     --button-bg-light: #2b2b4d;
     --button-hover: #4e4e6d;
     --border-radius: 12px;
+    --spacing-sm: 10px; /* Nuevo: para espaciados pequeños */
     --spacing-md: 16px;
     --spacing-lg: 24px;
 }
 
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Inter", sans-serif; /* Usamos Inter como fuente principal */
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinea al inicio para que el contenido no se centre verticalmente de golpe */
+    align-items: flex-start;
     min-height: 100vh;
     padding: var(--spacing-lg) var(--spacing-md);
     box-sizing: border-box;
@@ -26,7 +27,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 400px; /* Ancho máximo para pantallas más grandes */
+    max-width: 400px;
     text-align: center;
     background-color: #24243e;
     border-radius: var(--border-radius);
@@ -34,12 +35,43 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* Sección de perfil/logo del grupo */
+.profile-header {
+    margin-bottom: var(--spacing-lg); /* Espacio antes del título */
+}
+
+.group-logo {
+    width: 100px; /* Tamaño del logo del grupo */
+    height: 100px;
+    border-radius: 50%; /* Para hacerlo circular si es una imagen de perfil */
+    object-fit: cover;
+    border: 3px solid var(--twitch-color); /* Borde para que destaque */
+    box-shadow: 0 0 15px rgba(145, 70, 255, 0.5);
+}
+
+.tagline {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--spacing-sm);
+}
+
+
 .title {
     font-size: 1.8em;
-    margin-bottom: var(--spacing-lg);
+    margin-top: 0; /* Ajustamos el margen superior si ya hay un profile-header */
+    margin-bottom: var(--spacing-lg) * 1.5; /* Más espacio debajo del título */
+    padding-bottom: 30px;
     color: var(--text-color);
-    font-weight: 700;
+    font-weight: 200;
+    font-style: italic;
 }
+
+.info-text {
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--spacing-lg);
+}
+
 
 .links-grid {
     display: grid;
@@ -49,7 +81,7 @@ body {
 .link-button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Mantener espacio entre el contenido y los iconos finales */
     padding: var(--spacing-md) 20px;
     background-color: var(--button-bg-light);
     color: var(--text-color);
@@ -57,22 +89,52 @@ body {
     border-radius: var(--border-radius);
     font-weight: 500;
     font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: 2px solid transparent; /* Borde para el hover */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Añadimos box-shadow a la transición */
+    border: 2px solid transparent;
 }
-
 
 .link-button:hover {
     background-color: var(--button-hover);
     transform: translateY(-3px);
     border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil al hover */
+}
+
+/* Contenido del botón */
+.link-button .button-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Para que el contenido ocupe el espacio disponible */
 }
 
 .link-button .icon {
     width: 40px;
     height: 40px;
+    border-radius: 50%; /* Para las imágenes de perfil */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien al círculo */
     margin-right: 12px;
-    
+}
+
+/* Indicadores y iconos de plataforma a la derecha */
+.link-button .indicators {
+    display: flex;
+    align-items: center;
+    margin-left: var(--spacing-md); /* Espacio entre el texto y los iconos */
+}
+
+/* Estilos para el icono de la plataforma (Twitch, YouTube, TikTok) */
+.platform-icon {
+    width: 24px; /* Tamaño más pequeño para el icono de la plataforma */
+    height: 24px;
+    margin-left: var(--spacing-sm); /* Espacio entre el icono y el indicador Live */
+    filter: invert(100%); /* Para hacer los SVG de Twitch blancos si son oscuros */
+}
+
+/* Ajuste específico para Bootstrap Icons (i) */
+i.platform-icon {
+    font-size: 24px; /* Mantener la consistencia del tamaño */
+    color: white; /* Asegurar que los iconos de Bootstrap sean blancos */
+    margin-left: var(--spacing-sm);
 }
 
 /* Colores específicos para cada plataforma */
@@ -81,29 +143,37 @@ body {
     color: white;
 }
 .link-button.twitch:hover {
-    background-color: #772ace; /* Un tono más oscuro de Twitch */
+    background-color: #772ace;
 }
+.link-button.twitch .platform-icon {
+    filter: invert(100%); /* Para el SVG de Twitch */
+}
+
 
 .link-button.youtube {
     background-color: var(--youtube-color);
     color: white;
 }
 .link-button.youtube:hover {
-    background-color: #cc0000; /* Un tono más oscuro de YouTube */
+    background-color: #cc0000;
 }
+.link-button.youtube i.platform-icon {
+    color: white; /* Asegurar que el icono de YouTube sea blanco */
+}
+
 
 .link-button.tiktok {
     background-color: var(--tiktok-color);
     color: var(--bg-color); /* Texto oscuro para contrastar con el TikTok color */
 }
 .link-button.tiktok:hover {
-    background-color: #00d4c1; /* Un tono más oscuro de TikTok */
+    background-color: #00d4c1;
+}
+.link-button.tiktok i.platform-icon {
+    color: var(--bg-color); /* Asegurar que el icono de TikTok sea oscuro */
 }
 
-i {
-    font-size: 30px;
-    margin-left: 10px;
-}
+
 
 /* Media Queries para pantallas más grandes si es necesario, aunque mobile-first es la prioridad */
 @media (min-width: 600px) {
@@ -117,28 +187,31 @@ i {
         font-size: 1.2em;
         padding: 18px 25px;
     }
+    .group-logo {
+        width: 120px;
+        height: 120px;
+    }
 }
-
-/* ... (tu CSS anterior) ... */
 
 /* Estilos para el indicador de "En Vivo" */
 .live-indicator {
-    width: 40px;
-    height: 40px;
-    background-color: transparent; /* Por defecto transparente */
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
     border-radius: 50%;
-    margin-left: 10px;
-    position: relative; /* Para el parpadeo */
-    display: inline-block; /* Para que ocupe espacio */
-    opacity: 0; /* Por defecto oculto */
-    transition: opacity 0.3s ease; /* Transición suave */
+    margin-left: var(--spacing-sm); /* Espacio entre el icono de Twitch y el live indicator */
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    flex-shrink: 0; /* Evita que se encoja */
 }
 
 .live-indicator.live {
-    background-color: #ff0000; /* Rojo vivo */
-    opacity: 1; /* Visible */
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); /* Sombra inicial para el pulso */
-    animation: pulse 1.5s infinite; /* Animación de pulso */
+    background-color: #ff0000;
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
@@ -156,3 +229,35 @@ i {
     }
 }
 
+/* ... (todo tu CSS anterior) ... */
+
+/* Estilos GENERALES para el icono de la plataforma (SVG y Bootstrap Icons) */
+.platform-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: var(--spacing-sm);
+    filter: invert(100%); /* Para SVGs como el de Twitch que podrías querer que sean blancos */
+}
+
+/* Ajuste específico para Bootstrap Icons (i) */
+i.platform-icon {
+    font-size: 24px;
+    /* QUITAMOS el 'color: white;' de aquí, para que las reglas específicas puedan actuar */
+    margin-left: var(--spacing-sm);
+}
+
+/* Colores específicos para cada plataforma */
+/* ... (twitch y youtube igual) ... */
+
+
+.link-button.tiktok {
+    background-color: var(--tiktok-color);
+    color: var(--bg-color); /* Esto es para el texto del botón */
+}
+.link-button.tiktok:hover {
+    background-color: #00d4c1;
+}
+.link-button.tiktok i.platform-icon {
+    color: var(--bg-color); /* ¡Asegúrate de que este color sea el que quieres! */
+    filter: none; /* Si por alguna razón un filter invert() previo lo afectara */
+}
